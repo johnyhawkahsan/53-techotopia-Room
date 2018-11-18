@@ -31,7 +31,21 @@ public class ProductRepository implements AsyncResult {
         ProductRoomDatabase db;
         db = ProductRoomDatabase.getDatabase(application);
         productDao = db.productDao();
-        allProducts = productDao.getAllProducts();
+        allProducts = productDao.getAllProducts(); // We get all products outside asyncTask by default in our constructor
+    }
+
+    public void insertProduct(Product newproduct) {
+        new insertAsyncTask(productDao).execute(newproduct);
+    }
+
+    public void deleteProduct(String name) {
+        new deleteAsyncTask(productDao).execute(name);
+    }
+
+    public void findProduct(String name) {
+        queryAsyncTask task = new queryAsyncTask(productDao);
+        task.delegate = this;
+        task.execute(name);
     }
 
     // methods that the ViewModel can call to obtain a references to the allProducts
@@ -59,7 +73,7 @@ public class ProductRepository implements AsyncResult {
         private ProductDao asyncTaskDao;
         private ProductRepository delegate = null;
 
-        //The AsyncTask class contains a constructor method into which must be passed a reference to the DAO object
+        // constructor method needs to be be passed a reference to the DAO object
         queryAsyncTask(ProductDao dao) {
             asyncTaskDao = dao;
         }
