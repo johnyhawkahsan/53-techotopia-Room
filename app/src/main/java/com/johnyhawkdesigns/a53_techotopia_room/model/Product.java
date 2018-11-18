@@ -16,8 +16,10 @@ public class Product {
     @ColumnInfo(name = "productName")
     private String name;
 
+    //Since it will not be necessary to reference the quantity column in SQL queries, a column name has not been assigned to the quantity variable.
     private int quantity;
 
+    // Constructor for our class
     public Product(String name, int quantity) {
         this.id = id;
         this.name = name;
