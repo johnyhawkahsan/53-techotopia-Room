@@ -34,8 +34,8 @@ public class ProductRepository implements AsyncResult {
         allProducts = productDao.getAllProducts(); // We get all products outside asyncTask by default in our constructor
     }
 
-    public void insertProduct(Product newproduct) {
-        new insertAsyncTask(productDao).execute(newproduct);
+    public void insertProduct(Product newProduct) {
+        new insertAsyncTask(productDao).execute(newProduct);
     }
 
     public void deleteProduct(String name) {
