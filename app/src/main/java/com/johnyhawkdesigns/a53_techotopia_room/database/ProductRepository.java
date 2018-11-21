@@ -87,7 +87,6 @@ public class ProductRepository implements AsyncResult {
         // returns the results to the repository instance where it is stored in the searchResults MutableLiveData object.
         @Override
         protected void onPostExecute(List<Product> result) {
-            Log.d(TAG, "onPostExecute: returned result = " + result.get(0).getName());
             delegate.asyncFinished(result);
         }
     }

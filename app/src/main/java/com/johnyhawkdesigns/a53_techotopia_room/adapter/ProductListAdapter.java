@@ -21,7 +21,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         productItemLayout = layoutId;
     }
 
-    void setProductList(List<Product> products) {
+    public void setProductList(List<Product> products) {
         productList = products;
         notifyDataSetChanged();
     }
@@ -49,7 +49,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         TextView item;
         ViewHolder(View itemView) {
             super(itemView);
-            item = itemView.findViewById(R.id.product_row);
+            item = itemView.findViewById(R.id.textView);
         }
     }
 
